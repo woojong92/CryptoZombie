@@ -1,4 +1,4 @@
-# [크립토좀비](https://cryptozombies.io) Lesson4를 학습하면서 정리한 내용입니다.
+# [크립토좀비](https://cryptozombies.io) Lesson1를 학습하면서 정리한 내용입니다. #
 
 # 챕터 3: 상태 변수&정수 #
 
