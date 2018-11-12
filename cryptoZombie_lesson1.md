@@ -45,13 +45,13 @@
 
 - 상태 변수가 블록체인에 영구적으로 저장되며, 이처럼 구제체의 동적 배열을 생성하면 마치 데이터베이스처럼 컨트랙트에 구조화된 데이터를 저장하는데 유용하다.
 
-##Public 배열
-
-- public으로 배열을 선언. 솔리디티는 이런 배열을 위해 getter메소드를 자동적으로 생성한다. 구문은 다음과 같다.
-
-	Person[] public people;
-
-- 그러면 다른 컨트랙트들이 이 배열을 읽을 수 있게 된다.( 단, 쓸 수는 없다.) 이는 컨트랙트에 공개 데이터를 저장할 때 유용한 패턴이다.
+	##Public 배열
+	
+	- public으로 배열을 선언. 솔리디티는 이런 배열을 위해 getter메소드를 자동적으로 생성한다. 구문은 다음과 같다.
+	
+		Person[] public people;
+	
+	- 그러면 다른 컨트랙트들이 이 배열을 읽을 수 있게 된다.( 단, 쓸 수는 없다.) 이는 컨트랙트에 공개 데이터를 저장할 때 유용한 패턴이다.
 
 
 #챕터 7: 함수 선언
@@ -69,27 +69,27 @@
 
 #챕터 8: 구조체와 배열 활용하기
 
-## 새로운 구조체 생성하기.
+	## 새로운 구조체 생성하기.
+		
+	- Person 구조체 생성 및 public 구조체 배열 생성
+		struct Person {
+		  uint age;
+		  string name;
+		}
+		
+		Person[] public people;
 	
-- Person 구조체 생성 및 public 구조체 배열 생성
-	struct Person {
-	  uint age;
-	  string name;
-	}
+	- 새로운 Person를 생성하고, people 배열에 추가하는 방법
 	
-	Person[] public people;
-
-- 새로운 Person를 생성하고, people 배열에 추가하는 방법
-
-	// 새로운 사람을 생성한다:
-	Person satoshi = Person(172, "Satoshi");
+		// 새로운 사람을 생성한다:
+		Person satoshi = Person(172, "Satoshi");
+		
+		// 이 사람을 배열에 추가한다:
+		people.push(satoshi);
 	
-	// 이 사람을 배열에 추가한다:
-	people.push(satoshi);
-
-- 이 두 코드를 조합하여 깔끔하게 한줄로 표현 할 수 있다.
-
-	people.push(Person(16, "Vitalik"));
+	- 이 두 코드를 조합하여 깔끔하게 한줄로 표현 할 수 있다.
+	
+		people.push(Person(16, "Vitalik"));
 
 #챕터 9: Private/Public 함수
 
@@ -111,32 +111,32 @@
 
 # 챕터 10: 함수를 더 알아보기
 
-##반환값
-- 함수에서는 어떤 값을 반환 받으려면 다음과 같이 선언해야 한다.
-
-	string greeting = "What's up dog";
+	##반환값
+	- 함수에서는 어떤 값을 반환 받으려면 다음과 같이 선언해야 한다.
 	
-	function sayHello() public returns (string) {
-	  return greeting;
-	}
+		string greeting = "What's up dog";
+		
+		function sayHello() public returns (string) {
+		  return greeting;
+		}
+	
+	- 솔리디티에서 함수 선언은 반환값 종류를 포함한다.(이 경우에는 string이다.)
 
-- 솔리디티에서 함수 선언은 반환값 종류를 포함한다.(이 경우에는 string이다.)
-
-##함수 제어자
-- 위에서 살펴 본 함수 sayHello()는 솔리디티에서 상태를 변화시키지 않는다. 즉, 어떤 값을 변경하거나 무언가를 쓰지 않는다.
-- 이 경우에는 **view** 함수로 선언한다. 이는 함수가 데이터를 보기만 하고 변경하지 않는다는 뜻이다.
-
-	function sayHello() public view returns (string) {	
-
-- 솔리디티는 **pure** 함수도 갖는다. 이는 함수가 앱에서 어떤 데이터도 접근하지 않는 것을 의미한다.
-
-	function _multiply(uint a, uint b) private pure returns (uint) {
-	  return a * b;
-	}
-
-- 이 함수는 앱에서 읽는 것도 하지 않고, 다만 반환값이 함수에 전달된 인자값에 따라서 달라진다. 이 경우에 함수를 **pure**로 선언한다.
-
-- 솔리디티 컴파일러는 어떤 제어자를 써야 하는지 경고 메시지를 통해 잘 알려준다.
+	##함수 제어자
+	- 위에서 살펴 본 함수 sayHello()는 솔리디티에서 상태를 변화시키지 않는다. 즉, 어떤 값을 변경하거나 무언가를 쓰지 않는다.
+	- 이 경우에는 **view** 함수로 선언한다. 이는 함수가 데이터를 보기만 하고 변경하지 않는다는 뜻이다.
+	
+		function sayHello() public view returns (string) {	
+	
+	- 솔리디티는 **pure** 함수도 갖는다. 이는 함수가 앱에서 어떤 데이터도 접근하지 않는 것을 의미한다.
+	
+		function _multiply(uint a, uint b) private pure returns (uint) {
+		  return a * b;
+		}
+	
+	- 이 함수는 앱에서 읽는 것도 하지 않고, 다만 반환값이 함수에 전달된 인자값에 따라서 달라진다. 이 경우에 함수를 **pure**로 선언한다.
+	
+	- 솔리디티 컴파일러는 어떤 제어자를 써야 하는지 경고 메시지를 통해 잘 알려준다.
 
 #챕터 11: Keccak256과 형 변환
 
@@ -149,16 +149,16 @@
 	//b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9
 	keccak256("aaaac");
 
-##형 변환
-
-	uint8 a = 5;
-	uint b = 6;
-	// a * b가 uint8이 아닌 uint를 반환하기 때문에 에러 메시지가 난다:
-	uint8 c = a * b; 
-	// b를 uint8으로 형 변환해서 코드가 제대로 작동하도록 해야 한다:
-	uint8 c = a * uint8(b); 
-
-- 위의 예시에서 a * b는 uint를 반환하지. 하지만 우리는 이 반환값을 uint8에 저장하려고 하니 잠재적으로 문제를 야기할 수 있네. 반환값을 uint8으로 형 변환하면 코드가 제대로 작동하고 컴파일러도 에러 메시지를 주지 않을 걸세.
+	##형 변환
+	
+		uint8 a = 5;
+		uint b = 6;
+		// a * b가 uint8이 아닌 uint를 반환하기 때문에 에러 메시지가 난다:
+		uint8 c = a * b; 
+		// b를 uint8으로 형 변환해서 코드가 제대로 작동하도록 해야 한다:
+		uint8 c = a * uint8(b); 
+	
+	- 위의 예시에서 a * b는 uint를 반환하지. 하지만 우리는 이 반환값을 uint8에 저장하려고 하니 잠재적으로 문제를 야기할 수 있네. 반환값을 uint8으로 형 변환하면 코드가 제대로 작동하고 컴파일러도 에러 메시지를 주지 않을 걸세.
 
 #챕터 12: 종합하기
 
