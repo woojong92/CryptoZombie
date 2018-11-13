@@ -1,3 +1,5 @@
+# [크립토좀비](https://cryptozombies.io) Lesson6를 학습하면서 정리한 내용입니다. #
+
 # 챕터 1: Web3.js 소개 #
 
 ## Web3.js가 뭔가요? ##

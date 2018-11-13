@@ -1,4 +1,4 @@
-# [크립토좀비](https://cryptozombies.io) Lesson1를 학습하면서 정리한 내용입니다. #
+# [크립토좀비](https://cryptozombies.io) Lesson5를 학습하면서 정리한 내용입니다. #
 
 # 챕터1: 이더리움 상의 토큰 #
 
