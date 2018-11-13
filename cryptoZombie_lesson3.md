@@ -308,7 +308,7 @@
 		  uint c;
 		}
 		
-		// `mini`는 구조체 압축을 했기 때문에 `normal`보다 가스를 조금 사용할 것이네.
+		// `mini`는 구조체 압축을 했기 때문에 `normal`보다 가스를 조금 사용할 것이다.
 		NormalStruct normal = NormalStruct(10, 20, 30);
 		MiniMe mini = MiniMe(10, 20, 30); 
 
